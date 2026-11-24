@@ -47,18 +47,18 @@ def contrast(a, b):
 def hsl(h):
     r, g, b = (v / 255 for v in hexrgb(h))
     mx, mn = max(r, g, b), min(r, g, b)
-    l = (mx + mn) / 2
+    lit = (mx + mn) / 2
     if mx == mn:
-        return 0, 0, l
+        return 0, 0, lit
     d = mx - mn
-    s = d / (2 - mx - mn) if l > 0.5 else d / (mx + mn)
+    s = d / (2 - mx - mn) if lit > 0.5 else d / (mx + mn)
     if mx == r:
         hh = ((g - b) / d + (6 if g < b else 0)) * 60
     elif mx == g:
         hh = ((b - r) / d + 2) * 60
     else:
         hh = ((r - g) / d + 4) * 60
-    return hh, s, l
+    return hh, s, lit
 
 
 def in_band(h, band):
@@ -71,8 +71,8 @@ def signal(cands, band, fallback, bg):
     for c in cands:
         if not c or not re.fullmatch(r"#[0-9a-fA-F]{6}", c):
             continue
-        h, s, l = hsl(c)
-        if in_band(h, band) and s >= 0.35 and 0.25 <= l <= 0.85:
+        h, s, lit = hsl(c)
+        if in_band(h, band) and s >= 0.35 and 0.25 <= lit <= 0.85:
             return ensure(c, bg)
     return ensure(fallback, bg)
 
