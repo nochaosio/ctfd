@@ -1,0 +1,93 @@
+// Tokens do tema ativo. Os valores abaixo sao o tema padrao do portal (Kanagawa), para o
+// primeiro frame e para quem roda sem JS; assets/js/nochaos_theme.js sobrescreve inline.
+:root {
+  --nc-font: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --nc-display: "Geist Sans", "Geist", "Inter", system-ui, sans-serif;
+  --nc-bg-deep: #17171e;
+  --nc-bg-deep-rgb: 23, 23, 30;
+  --nc-bg: #1f1f28;
+  --nc-bg-rgb: 31, 31, 40;
+  --nc-surface: #202838;
+  --nc-surface-rgb: 32, 40, 56;
+  --nc-surface-2: #223249;
+  --nc-surface-2-rgb: 34, 50, 73;
+  --nc-border: #223249;
+  --nc-border-rgb: 34, 50, 73;
+  --nc-border-strong: #54546d;
+  --nc-border-strong-rgb: 84, 84, 109;
+  --nc-text: #dcd7ba;
+  --nc-text-rgb: 220, 215, 186;
+  --nc-text-2: #dcd7ba;
+  --nc-text-2-rgb: 220, 215, 186;
+  --nc-muted: #a7a492;
+  --nc-muted-rgb: 167, 164, 146;
+  --nc-brand: #dcd7ba;
+  --nc-brand-rgb: 220, 215, 186;
+  --nc-brand-ink: #0c0e10;
+  --nc-brand-ink-rgb: 12, 14, 16;
+  --nc-selection: #363646;
+  --nc-selection-rgb: 54, 54, 70;
+  --nc-danger: #c34043;
+  --nc-danger-rgb: 195, 64, 67;
+  --nc-success: #98bb6c;
+  --nc-success-rgb: 152, 187, 108;
+  --nc-warning: #c0a36e;
+  --nc-warning-rgb: 192, 163, 110;
+  --nc-info: #7e9cd8;
+  --nc-info-rgb: 126, 156, 216;
+}
+
+// html:root (0,1,1) vence os [data-bs-theme] (0,1,0) do Bootstrap: claro ou escuro,
+// quem manda e a paleta ativa.
+html:root {
+  --bs-font-sans-serif: var(--nc-font);
+  --bs-font-monospace: var(--nc-font);
+  --bs-body-font-family: var(--nc-font);
+  --bs-body-bg: var(--nc-bg);
+  --bs-body-bg-rgb: var(--nc-bg-rgb);
+  --bs-body-color: var(--nc-text-2);
+  --bs-body-color-rgb: var(--nc-text-2-rgb);
+  --bs-emphasis-color: var(--nc-text);
+  --bs-emphasis-color-rgb: var(--nc-text-rgb);
+  --bs-heading-color: var(--nc-text);
+  --bs-secondary-color: var(--nc-muted);
+  --bs-secondary-color-rgb: var(--nc-muted-rgb);
+  --bs-tertiary-color: var(--nc-muted);
+  --bs-tertiary-color-rgb: var(--nc-muted-rgb);
+  --bs-secondary-bg: var(--nc-surface-2);
+  --bs-secondary-bg-rgb: var(--nc-surface-2-rgb);
+  --bs-tertiary-bg: var(--nc-surface);
+  --bs-tertiary-bg-rgb: var(--nc-surface-rgb);
+  --bs-border-color: var(--nc-border);
+  --bs-border-color-translucent: var(--nc-border);
+  --bs-link-color: var(--nc-brand);
+  --bs-link-color-rgb: var(--nc-brand-rgb);
+  --bs-link-hover-color: var(--nc-text);
+  --bs-link-hover-color-rgb: var(--nc-text-rgb);
+  --bs-primary: var(--nc-brand);
+  --bs-primary-rgb: var(--nc-brand-rgb);
+  --bs-secondary: var(--nc-border-strong);
+  --bs-secondary-rgb: var(--nc-border-strong-rgb);
+  --bs-dark: var(--nc-bg-deep);
+  --bs-dark-rgb: var(--nc-bg-deep-rgb);
+  --bs-light: var(--nc-surface-2);
+  --bs-light-rgb: var(--nc-surface-2-rgb);
+  --bs-white: var(--nc-text);
+  --bs-success: var(--nc-success);
+  --bs-success-rgb: var(--nc-success-rgb);
+  --bs-danger: var(--nc-danger);
+  --bs-danger-rgb: var(--nc-danger-rgb);
+  --bs-warning: var(--nc-warning);
+  --bs-warning-rgb: var(--nc-warning-rgb);
+  --bs-info: var(--nc-info);
+  --bs-info-rgb: var(--nc-info-rgb);
+  --bs-code-color: var(--nc-warning);
+  --bs-highlight-bg: var(--nc-selection);
+  --bs-highlight-color: var(--nc-text);
+  --bs-border-radius: 0;
+  --bs-border-radius-sm: 0;
+  --bs-border-radius-lg: 0;
+  --bs-border-radius-xl: 0;
+  --bs-border-radius-xxl: 0;
+  --bs-focus-ring-color: rgba(var(--nc-brand-rgb), 0.35);
+}

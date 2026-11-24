@@ -1,0 +1,352 @@
+// O visual do portal NOCHAOS (edicao omarchy.org) aplicado aos componentes do CTFd:
+// cantos retos, superficies planas com anel de 1px, rotulos em caixa alta espacados,
+// marca creme com tinta escura e um campo de pixels atras do hero.
+
+body {
+  background: var(--nc-bg);
+  color: var(--nc-text-2);
+  font-family: var(--nc-font);
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+input,
+select,
+textarea,
+button {
+  font-family: inherit;
+}
+
+::selection {
+  background: var(--nc-selection);
+  color: var(--nc-text);
+}
+
+h1,
+h2,
+h3,
+.h1,
+.h2,
+.h3 {
+  font-family: var(--nc-display);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+h4,
+h5,
+h6,
+.h4,
+.h5,
+.h6 {
+  font-family: var(--nc-font);
+  font-weight: 600;
+}
+
+// Navbar: barra escura com uma faixa de chama (CHAOS) na base.
+.navbar.bg-dark {
+  background-color: var(--nc-bg-deep) !important;
+  border-bottom: 1px solid var(--nc-border);
+  --bs-navbar-color: var(--nc-muted);
+  --bs-navbar-hover-color: var(--nc-text);
+  --bs-navbar-active-color: var(--nc-brand);
+  --bs-navbar-brand-color: var(--nc-text);
+  --bs-navbar-brand-hover-color: var(--nc-brand);
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--nc-danger), var(--nc-warning) 45%, transparent 85%);
+    opacity: 0.85;
+  }
+
+  .navbar-brand {
+    font-family: var(--nc-display);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-link {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+}
+
+#nc-theme-select {
+  width: auto;
+  min-width: 9.5rem;
+  padding: 0.25rem 2rem 0.25rem 0.5rem !important;
+  font-size: 0.75rem;
+  background-color: var(--nc-bg);
+}
+
+// Hero: campo de pixels sutil e titulo em Geist.
+.jumbotron {
+  position: relative;
+  background-color: var(--nc-bg-deep);
+  background-image: radial-gradient(rgba(var(--nc-muted-rgb), 0.16) 1px, transparent 1.4px);
+  background-size: 12px 12px;
+  color: var(--nc-text);
+  border-bottom: 1px solid var(--nc-border);
+
+  h1 {
+    font-family: var(--nc-display);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+
+  .container {
+    font-family: var(--nc-font);
+  }
+}
+
+// Superficies.
+.card,
+.modal-content,
+.dropdown-menu,
+.list-group-item,
+.toast {
+  --bs-card-bg: var(--nc-surface);
+  --bs-card-border-color: var(--nc-border);
+  --bs-card-cap-bg: var(--nc-surface-2);
+  --bs-modal-bg: var(--nc-surface);
+  --bs-modal-border-color: var(--nc-border-strong);
+  --bs-modal-header-border-color: var(--nc-border);
+  --bs-modal-footer-border-color: var(--nc-border);
+  --bs-dropdown-bg: var(--nc-surface);
+  --bs-dropdown-border-color: var(--nc-border-strong);
+  --bs-dropdown-link-color: var(--nc-text-2);
+  --bs-dropdown-link-hover-bg: var(--nc-surface-2);
+  --bs-dropdown-link-hover-color: var(--nc-text);
+  --bs-dropdown-link-active-bg: var(--nc-brand);
+  --bs-dropdown-link-active-color: var(--nc-brand-ink);
+  --bs-list-group-bg: var(--nc-surface);
+  --bs-list-group-border-color: var(--nc-border);
+  --bs-toast-bg: var(--nc-surface);
+}
+
+.modal-content {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.07);
+}
+
+.modal-title {
+  font-family: var(--nc-display);
+}
+
+.table {
+  --bs-table-bg: transparent;
+  --bs-table-color: var(--nc-text-2);
+  --bs-table-border-color: var(--nc-border);
+  --bs-table-striped-bg: rgba(var(--nc-surface-2-rgb), 0.5);
+  --bs-table-striped-color: var(--nc-text-2);
+  --bs-table-hover-bg: var(--nc-surface-2);
+  --bs-table-hover-color: var(--nc-text);
+
+  thead th {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--nc-muted);
+  }
+}
+
+// Formularios.
+.form-control,
+.form-select {
+  background-color: var(--nc-bg-deep);
+  color: var(--nc-text);
+  border-color: var(--nc-border-strong);
+
+  &:focus {
+    background-color: var(--nc-bg-deep);
+    color: var(--nc-text);
+    border-color: var(--nc-brand);
+    box-shadow: 0 0 0 0.2rem rgba(var(--nc-brand-rgb), 0.25);
+  }
+}
+
+.form-control::placeholder {
+  color: var(--nc-muted);
+}
+
+[data-bs-theme="dark"] .form-select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23a7a492' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e");
+}
+
+.form-label,
+label {
+  color: var(--nc-text-2);
+}
+
+// Botoes: marca creme com tinta escura, rotulo em caixa alta.
+.btn {
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--nc-brand);
+  --bs-btn-border-color: var(--nc-brand);
+  --bs-btn-color: var(--nc-brand-ink);
+  --bs-btn-hover-bg: var(--nc-text);
+  --bs-btn-hover-border-color: var(--nc-text);
+  --bs-btn-hover-color: var(--nc-bg);
+  --bs-btn-active-bg: var(--nc-text);
+  --bs-btn-active-border-color: var(--nc-text);
+  --bs-btn-active-color: var(--nc-bg);
+  --bs-btn-disabled-bg: var(--nc-border-strong);
+  --bs-btn-disabled-border-color: var(--nc-border-strong);
+  --bs-btn-disabled-color: var(--nc-text);
+}
+
+.btn-outline-primary,
+.btn-outline-secondary {
+  --bs-btn-color: var(--nc-brand);
+  --bs-btn-border-color: var(--nc-border-strong);
+  --bs-btn-hover-bg: var(--nc-brand);
+  --bs-btn-hover-border-color: var(--nc-brand);
+  --bs-btn-hover-color: var(--nc-brand-ink);
+  --bs-btn-active-bg: var(--nc-brand);
+  --bs-btn-active-border-color: var(--nc-brand);
+  --bs-btn-active-color: var(--nc-brand-ink);
+}
+
+.btn-secondary {
+  --bs-btn-bg: var(--nc-surface-2);
+  --bs-btn-border-color: var(--nc-border-strong);
+  --bs-btn-color: var(--nc-text);
+  --bs-btn-hover-bg: var(--nc-border-strong);
+  --bs-btn-hover-border-color: var(--nc-border-strong);
+  --bs-btn-hover-color: var(--nc-text);
+}
+
+.btn-success {
+  --bs-btn-bg: var(--nc-success);
+  --bs-btn-border-color: var(--nc-success);
+  --bs-btn-color: var(--nc-bg-deep);
+  --bs-btn-hover-bg: var(--nc-success);
+  --bs-btn-hover-border-color: var(--nc-success);
+  --bs-btn-hover-color: var(--nc-bg-deep);
+}
+
+.btn-danger {
+  --bs-btn-bg: var(--nc-danger);
+  --bs-btn-border-color: var(--nc-danger);
+  --bs-btn-hover-bg: var(--nc-danger);
+  --bs-btn-hover-border-color: var(--nc-danger);
+}
+
+.btn-info {
+  --bs-btn-bg: var(--nc-info);
+  --bs-btn-border-color: var(--nc-info);
+  --bs-btn-color: var(--nc-bg-deep);
+}
+
+.btn-warning {
+  --bs-btn-bg: var(--nc-warning);
+  --bs-btn-border-color: var(--nc-warning);
+  --bs-btn-color: var(--nc-bg-deep);
+}
+
+// Desafios: as cores ficam em components/_challenge; aqui so o movimento.
+.challenge-button {
+  transition: transform 0.12s ease, border-color 0.12s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.category-header h3 {
+  font-family: var(--nc-font);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--nc-brand);
+}
+
+.nav-tabs {
+  --bs-nav-tabs-border-color: var(--nc-border);
+  --bs-nav-tabs-link-active-bg: var(--nc-surface);
+  --bs-nav-tabs-link-active-color: var(--nc-text);
+  --bs-nav-tabs-link-active-border-color: var(--nc-border) var(--nc-border) var(--nc-surface);
+}
+
+.nav-link {
+  --bs-nav-link-color: var(--nc-muted);
+  --bs-nav-link-hover-color: var(--nc-text);
+}
+
+.nav-pills {
+  --bs-nav-pills-link-active-bg: var(--nc-brand);
+  --bs-nav-pills-link-active-color: var(--nc-brand-ink);
+}
+
+.text-muted,
+.text-secondary {
+  color: var(--nc-muted) !important;
+}
+
+.alert {
+  --bs-alert-bg: var(--nc-surface-2);
+  --bs-alert-color: var(--nc-text);
+  --bs-alert-border-color: var(--nc-border-strong);
+  border-left-width: 3px;
+}
+
+.alert-danger { --bs-alert-border-color: var(--nc-danger); }
+.alert-success { --bs-alert-border-color: var(--nc-success); }
+.alert-warning { --bs-alert-border-color: var(--nc-warning); }
+.alert-info,
+.alert-primary { --bs-alert-border-color: var(--nc-info); }
+
+code,
+pre {
+  font-family: var(--nc-font);
+  color: var(--nc-warning);
+}
+
+pre {
+  background: var(--nc-bg-deep);
+  border: 1px solid var(--nc-border);
+  padding: 0.75rem;
+}
+
+.badge.bg-secondary {
+  background-color: var(--nc-surface-2) !important;
+  color: var(--nc-text);
+}
+
+.pagination {
+  --bs-pagination-bg: var(--nc-surface);
+  --bs-pagination-color: var(--nc-text-2);
+  --bs-pagination-border-color: var(--nc-border);
+  --bs-pagination-hover-bg: var(--nc-surface-2);
+  --bs-pagination-hover-color: var(--nc-text);
+  --bs-pagination-active-bg: var(--nc-brand);
+  --bs-pagination-active-border-color: var(--nc-brand);
+  --bs-pagination-active-color: var(--nc-brand-ink);
+}
+
+.footer {
+  border-top: 1px solid var(--nc-border);
+  background: var(--nc-bg-deep);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .challenge-button {
+    transition: none;
+  }
+
+  .challenge-button:hover {
+    transform: none;
+  }
+}

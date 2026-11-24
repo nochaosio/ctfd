@@ -1,0 +1,18 @@
+// Fontes do portal NOCHAOS: JetBrains Mono no texto, Geist nos titulos.
+// Servidas pelo proprio CTFd (static/webfonts), sem Google Fonts.
+@use "~/@fontsource/jetbrains-mono/scss/mixins" as JetBrainsMono;
+@use "~/@fontsource/geist-sans/scss/mixins" as Geist;
+
+@include JetBrainsMono.faces(
+  $directory: "../webfonts",
+  $formats: woff2,
+  $subsets: (latin, latin-ext),
+  $weights: (400, 500, 600, 700),
+  $styles: (normal, italic)
+);
+@include Geist.faces($directory: "../webfonts", $formats: woff2, $subsets: latin, $weights: (400, 500, 600, 700));
+
+$fa-font-path: "../webfonts";
+@import "~/@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "~/@fortawesome/fontawesome-free/scss/solid.scss";
+@import "~/@fortawesome/fontawesome-free/scss/brands.scss";

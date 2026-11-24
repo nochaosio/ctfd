@@ -1,0 +1,78 @@
+// Tema NOCHAOS: Bootstrap compilado com a paleta padrao do portal (Kanagawa), as
+// fontes do portal e cantos retos. Em runtime os tokens --nc-* (includes/nochaos)
+// trocam a paleta pelos temas Omarchy/Formal.
+@use "bootstrap/scss/bootstrap" as * with (
+  $primary: #dcd7ba,
+  $secondary: #54546d,
+  $success: #98bb6c,
+  $info: #7e9cd8,
+  $warning: #c0a36e,
+  $danger: #c34043,
+  $dark: #17171e,
+  $body-bg-dark: #1f1f28,
+  $body-color-dark: #dcd7ba,
+  $font-family-sans-serif: ("JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace),
+  $font-family-monospace: ("JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace),
+  $headings-font-family: ("Geist Sans", "Geist", "Inter", system-ui, sans-serif),
+  $font-size-base: 0.875rem,
+  $border-radius: 0,
+  $border-radius-sm: 0,
+  $border-radius-lg: 0,
+  $border-radius-xl: 0,
+  $border-radius-xxl: 0
+);
+
+@use "includes/components/table";
+@use "includes/components/jumbotron";
+@use "includes/components/challenge";
+@use "includes/components/sticky-footer";
+@use "includes/components/graphs";
+
+@use "includes/utils/fonts";
+@use "includes/utils/opacity";
+@use "includes/utils/min-height";
+@use "includes/utils/cursors";
+@use "includes/utils/lolight";
+
+@use "includes/icons/award-icons";
+@use "includes/icons/flag-icons";
+
+@use "includes/nochaos/tokens";
+@use "includes/nochaos/look";
+
+h1,
+h2 {
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+blockquote {
+  border-left: 4px solid $secondary;
+  padding-left: 15px;
+}
+
+input,
+select {
+  padding: 0.6rem !important;
+  height: auto !important;
+}
+
+.fa-spin.spinner {
+  text-align: center;
+  opacity: 0.5;
+}
+
+.badge-notification {
+  vertical-align: top;
+  margin-left: -1.5em;
+  font-size: 50%;
+}
+
+.form-select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e");
+  background-size: 8px 10px;
+}

@@ -1,0 +1,31 @@
+/* Challenge styles
+-------------------------------------------------- */
+
+.challenge-desc {
+  overflow-wrap: anywhere;
+
+  img {
+    max-width: 100%;
+  }
+}
+
+// NOCHAOS: cartoes planos na superficie do tema com anel de 1px (claro e escuro).
+.challenge-button {
+  border: 1px solid var(--nc-border-strong);
+  background-color: var(--nc-surface);
+  color: var(--nc-text);
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--nc-surface-2);
+    border-color: var(--nc-brand);
+    color: var(--nc-text);
+  }
+
+  &.challenge-solved,
+  &.challenge-solved:hover {
+    background-color: var(--nc-success);
+    border-color: var(--nc-success);
+    color: var(--nc-bg-deep);
+  }
+}
