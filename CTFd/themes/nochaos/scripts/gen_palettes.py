@@ -19,7 +19,7 @@ OUT = ROOT / "assets" / "js" / "nochaos" / "palettes.json"
 
 def hexrgb(h):
     h = h.lstrip("#")
-    return [int(h[i:i + 2], 16) for i in (0, 2, 4)]
+    return [int(h[i : i + 2], 16) for i in (0, 2, 4)]
 
 
 def tohex(c):
@@ -35,6 +35,7 @@ def lum(h):
     def ch(v):
         s = v / 255
         return s / 12.92 if s <= 0.03928 else ((s + 0.055) / 1.055) ** 2.4
+
     r, g, b = map(ch, hexrgb(h))
     return 0.2126 * r + 0.7152 * g + 0.0722 * b
 
@@ -95,13 +96,20 @@ def site_tokens(t):
     lift = "#ffffff" if dark else "#000000"
     lb = c.get("lighter_background") or mix(bg, lift, 0.08)
     derived = {
-        "bg-deep": c.get("dark_background") or mix(bg, "#000000" if dark else "#ffffff", 0.25),
-        "bg": bg, "surface": mix(bg, lb, 0.5), "surface-2": lb,
-        "border-subtle": lb, "border-strong": c.get("muted") or mix(bg, lift, 0.3),
-        "text": c.get("bright_foreground") or c["foreground"], "text-secondary": c["foreground"],
+        "bg-deep": c.get("dark_background")
+        or mix(bg, "#000000" if dark else "#ffffff", 0.25),
+        "bg": bg,
+        "surface": mix(bg, lb, 0.5),
+        "surface-2": lb,
+        "border-subtle": lb,
+        "border-strong": c.get("muted") or mix(bg, lift, 0.3),
+        "text": c.get("bright_foreground") or c["foreground"],
+        "text-secondary": c["foreground"],
         "text-muted": c.get("dark_foreground") or mix(c["foreground"], bg, 0.35),
         "brand": c["accent"],
-        "brand-ink": "#0c0e10" if contrast(c["accent"], "#0c0e10") >= contrast(c["accent"], "#ffffff") else "#ffffff",
+        "brand-ink": "#0c0e10"
+        if contrast(c["accent"], "#0c0e10") >= contrast(c["accent"], "#ffffff")
+        else "#ffffff",
         "selection": c.get("selection") or mix(bg, c["accent"], 0.2),
     }
     return {**derived, **(t.get("site") or {})}
@@ -111,16 +119,40 @@ def compact(t):
     c, s = t["colors"], site_tokens(t)
     bg = s["bg"]
     return {
-        "id": t["id"], "name": t["name"], "mode": t["mode"],
+        "id": t["id"],
+        "name": t["name"],
+        "mode": t["mode"],
         "v": {
-            "bg-deep": s["bg-deep"], "bg": bg, "surface": s["surface"], "surface-2": s["surface-2"],
-            "border": s["border-subtle"], "border-strong": s["border-strong"],
-            "text": s["text"], "text-2": s["text-secondary"], "muted": s["text-muted"],
-            "brand": s["brand"], "brand-ink": s["brand-ink"], "selection": s["selection"],
-            "danger": signal([c.get("red"), c.get("bright_red")], (340, 20), "#e5484d", bg),
-            "success": signal([c.get("green"), c.get("bright_green")], (75, 165), "#2fb67c", bg),
-            "warning": signal([c.get("yellow"), c.get("bright_yellow"), c.get("orange")], (25, 60), "#e5a50a", bg),
-            "info": signal([c.get("cyan"), c.get("blue"), c.get("bright_cyan")], (170, 240), "#4c8dff", bg),
+            "bg-deep": s["bg-deep"],
+            "bg": bg,
+            "surface": s["surface"],
+            "surface-2": s["surface-2"],
+            "border": s["border-subtle"],
+            "border-strong": s["border-strong"],
+            "text": s["text"],
+            "text-2": s["text-secondary"],
+            "muted": s["text-muted"],
+            "brand": s["brand"],
+            "brand-ink": s["brand-ink"],
+            "selection": s["selection"],
+            "danger": signal(
+                [c.get("red"), c.get("bright_red")], (340, 20), "#e5484d", bg
+            ),
+            "success": signal(
+                [c.get("green"), c.get("bright_green")], (75, 165), "#2fb67c", bg
+            ),
+            "warning": signal(
+                [c.get("yellow"), c.get("bright_yellow"), c.get("orange")],
+                (25, 60),
+                "#e5a50a",
+                bg,
+            ),
+            "info": signal(
+                [c.get("cyan"), c.get("blue"), c.get("bright_cyan")],
+                (170, 240),
+                "#4c8dff",
+                bg,
+            ),
         },
     }
 
@@ -134,7 +166,11 @@ def js_array(src, name):
 
 def formal_themes(src):
     """FORMAL_THEMES é JS literal (chaves sem aspas, spread de `signals`): converte para JSON."""
-    signals = json.loads(re.sub(r"(\w+):", r'"\1":', re.search(r"const signals = (\{.*?\});", src).group(1)).replace("'", '"'))
+    signals = json.loads(
+        re.sub(
+            r"(\w+):", r'"\1":', re.search(r"const signals = (\{.*?\});", src).group(1)
+        ).replace("'", '"')
+    )
     body = js_array(src, "FORMAL_THEMES")
     body = body.replace("...signals,", "")
     body = re.sub(r"//.*", "", body)
@@ -155,8 +191,13 @@ def main():
     themes = json.loads(js_array(om_src, "OMARCHY_THEMES"))
     themes += formal_themes((lib / "themes.js").read_text())
     data = [compact(t) for t in themes]
-    data.sort(key=lambda t: (t["id"] != default, t["mode"] != "dark", t["name"].lower()))
-    OUT.write_text(json.dumps({"default": default, "themes": data}, indent=1, ensure_ascii=False) + "\n")
+    data.sort(
+        key=lambda t: (t["id"] != default, t["mode"] != "dark", t["name"].lower())
+    )
+    OUT.write_text(
+        json.dumps({"default": default, "themes": data}, indent=1, ensure_ascii=False)
+        + "\n"
+    )
     print(f"{OUT.relative_to(ROOT)}: {len(data)} temas, default {default}")
 
 
